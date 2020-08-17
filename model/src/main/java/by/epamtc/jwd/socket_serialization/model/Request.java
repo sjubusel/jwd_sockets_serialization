@@ -4,17 +4,14 @@ import java.util.ArrayList;
 
 public class Request {
     private String fileName = "";
-    private ArrayList<RequestOperation> operationsOrder = new ArrayList<>();
-    private ArrayList<String> operationsParams = new ArrayList<>();
+    private ArrayList<RequestOperationEntry> operations = new ArrayList<>();
 
     public Request() {
     }
 
-    public Request(String fileName, ArrayList<RequestOperation> operationsOrder,
-            ArrayList<String> operationsParameters) {
+    public Request(String fileName, ArrayList<RequestOperationEntry> operations) {
         this.fileName = fileName;
-        this.operationsOrder = operationsOrder;
-        this.operationsParams = operationsParameters;
+        this.operations = operations;
     }
 
     public String getFileName() {
@@ -25,25 +22,16 @@ public class Request {
         this.fileName = fileName;
     }
 
-    public ArrayList<RequestOperation> getOperationsOrder() {
-        return operationsOrder;
+    public ArrayList<RequestOperationEntry> getOperations() {
+        return operations;
     }
 
-    public void setOperationsOrder(ArrayList<RequestOperation> operationsOrder) {
-        this.operationsOrder = operationsOrder;
+    public void setOperations(ArrayList<RequestOperationEntry> operations) {
+        this.operations = operations;
     }
 
-    public ArrayList<String> getOperationsParams() {
-        return operationsParams;
-    }
-
-    public void setOperationsParams(ArrayList<String> operationsParams) {
-        this.operationsParams = operationsParams;
-    }
-
-    public boolean addOperation(RequestOperation operation, String parameterValue) {
-        return operationsOrder.add(operation)
-                && operationsParams.add(parameterValue);
+    public boolean addOperation(RequestOperationEntry operation) {
+        return operations.add(operation);
     }
 
     @Override
@@ -54,23 +42,12 @@ public class Request {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Request req = (Request) o;
-        if (!this.fileName.equals(req.fileName)) {
+        Request request = (Request) o;
+        if (!fileName.equals(request.fileName)) {
             return false;
         }
-        if ((operationsOrder.size() != req.operationsOrder.size())) {
-            return false;
-        }
-        if ((operationsParams.size() != req.operationsParams.size())) {
-            return false;
-        }
-        for (int i = 0; i < operationsOrder.size(); i++) {
-            if (operationsOrder.get(i) != req.operationsOrder.get(i)) {
-                return false;
-            }
-        }
-        for (int i = 0; i < operationsParams.size(); i++) {
-            if (!operationsParams.get(i).equals(req.operationsParams.get(i))) {
+        for (int i = 0; i < operations.size(); i++) {
+            if (!operations.get(i).equals(request.operations.get(i))) {
                 return false;
             }
         }
@@ -80,11 +57,8 @@ public class Request {
     @Override
     public int hashCode() {
         int hash = 17;
-        for (RequestOperation operation : operationsOrder) {
+        for (RequestOperationEntry operation : operations) {
             hash = 31 * hash + (operation == null ? 0 : operation.hashCode());
-        }
-        for (String param : operationsParams) {
-            hash = 31 * hash + (param == null ? 0 : param.hashCode());
         }
         return hash;
     }
@@ -93,8 +67,7 @@ public class Request {
     public String toString() {
         return "Request{" +
                 "fileName='" + fileName + '\'' +
-                ", operationsOrder=" + operationsOrder +
-                ", operationsParams=" + operationsParams +
+                ", operations=" + operations +
                 '}';
     }
 }
