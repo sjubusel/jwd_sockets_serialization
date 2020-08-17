@@ -3,6 +3,7 @@ package by.epamtc.jwd.socket_serialization.client.controller;
 import by.epamtc.jwd.socket_serialization.client.service.RequestBuilderService;
 import by.epamtc.jwd.socket_serialization.client.service.ServiceFactory;
 import by.epamtc.jwd.socket_serialization.client.view.UserCommunicator;
+import by.epamtc.jwd.socket_serialization.model.RequestOperationEntry;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class ClientController {
                 userCommunicator.informUserAboutChosenFileName(userInput);
                 userCommunicator.askUserIsFileNameCorrect();
                 userInput = reader.readLine();
-                if (!userCommunicator.isFileNameCorrect(userInput)) {
+                if (!userCommunicator.isUserInputCorrect(userInput)) {
                     userCommunicator.informUserFileNameIsIncorrect();
                     continue;
                 }
@@ -35,8 +36,16 @@ public class ClientController {
 
                 userCommunicator.askUserAboutOperation();
                 userInput = reader.readLine();
-                userCommunicator.informUserAboutChosenOperation(userInput);
-                requestBuilderService.addOperation(userInput);
+                RequestOperationEntry operationEntry = userCommunicator
+                        .receiveChosenOperation(userInput.trim());
+                userCommunicator.informUserAboutChosenOperation(operationEntry);
+                userCommunicator.askUserIsOperationCorrect();
+                userInput = reader.readLine();
+                if (!userCommunicator.isUserInputCorrect(userInput)) {
+                    userCommunicator.informUserOperationIsIncorrect();
+                    continue;
+                }
+//                requestBuilderService.addOperation(operation, userInput);
 
                 userCommunicator.printDialogFooter();
 
