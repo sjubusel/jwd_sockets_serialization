@@ -1,15 +1,17 @@
 package by.epamtc.jwd.socket_serialization.model;
 
-public class RequestOperationEntry {
+public class RequestOperationEntry implements java.io.Serializable {
+    private static final long serialVersionUID = 168182145881206812L;
+
     private RequestOperation operationKey;
-    private String paramValue;
+    private String operationValue;
 
     public RequestOperationEntry() {
     }
 
-    public RequestOperationEntry(RequestOperation operationKey, String parameterValue) {
+    public RequestOperationEntry(RequestOperation operationKey, String operationValue) {
         this.operationKey = operationKey;
-        this.paramValue = parameterValue;
+        this.operationValue = operationValue;
     }
 
     public RequestOperation getOperationKey() {
@@ -20,12 +22,12 @@ public class RequestOperationEntry {
         this.operationKey = operationKey;
     }
 
-    public String getParamValue() {
-        return paramValue;
+    public String getOperationValue() {
+        return operationValue;
     }
 
-    public void setParamValue(String paramValue) {
-        this.paramValue = paramValue;
+    public void setOperationValue(String operationValue) {
+        this.operationValue = operationValue;
     }
 
     @Override
@@ -38,14 +40,14 @@ public class RequestOperationEntry {
         }
         RequestOperationEntry entry = (RequestOperationEntry) o;
         return (operationKey != entry.operationKey)
-                && (paramValue.equals(entry.paramValue));
+                && (operationValue.equals(entry.operationValue));
     }
 
     @Override
     public int hashCode() {
         int hash = 17;
         hash = 31 * hash + (operationKey == null ? 0 : operationKey.hashCode());
-        hash = 31 * hash + (paramValue == null ? 0 : paramValue.hashCode());
+        hash = 31 * hash + (operationValue == null ? 0 : operationValue.hashCode());
         return hash;
     }
 }

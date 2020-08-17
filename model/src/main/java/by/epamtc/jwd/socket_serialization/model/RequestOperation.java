@@ -1,6 +1,6 @@
 package by.epamtc.jwd.socket_serialization.model;
 
-public enum RequestOperation {
+public enum RequestOperation implements java.io.Serializable {
     WORDS_DELETION_12(1, "Из текста удалить все слова" +
             " заданной длины, начинающиеся на согласную букву."),
     FIRST_LETTER_DELETION_15(2, "Преобразовать каждое " +

@@ -1,8 +1,11 @@
 package by.epamtc.jwd.socket_serialization.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Request {
+public class Request implements Serializable {
+    private static final long serialVersionUID = -6094367457972134648L;
+
     private String fileName = "";
     private ArrayList<RequestOperationEntry> operations = new ArrayList<>();
 
