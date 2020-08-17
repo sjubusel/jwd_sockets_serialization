@@ -50,4 +50,12 @@ public class RequestOperationEntry implements java.io.Serializable {
         hash = 31 * hash + (operationValue == null ? 0 : operationValue.hashCode());
         return hash;
     }
+
+    @Override
+    public String toString() {
+        return "RequestOperationEntry{" +
+                "operationKey=" + operationKey +
+                ", operationValue='" + operationValue + '\'' +
+                '}';
+    }
 }

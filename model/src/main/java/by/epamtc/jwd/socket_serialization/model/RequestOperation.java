@@ -26,4 +26,20 @@ public enum RequestOperation implements java.io.Serializable {
     public String getDescription() {
         return description;
     }
+
+    public void setOrdinalNumber(int ordinalNumber) {
+        this.ordinalNumber = ordinalNumber;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "RequestOperation{" +
+                "ordinalNumber=" + ordinalNumber +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
