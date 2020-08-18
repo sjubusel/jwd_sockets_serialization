@@ -45,7 +45,7 @@ public class ClientController {
                     userCommunicator.informUserOperationIsIncorrect();
                     continue;
                 }
-//                requestBuilderService.addOperation(operation, userInput);
+                requestBuilderService.addOperation(operationEntry);
 
                 userCommunicator.printDialogFooter();
 
