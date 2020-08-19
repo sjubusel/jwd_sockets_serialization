@@ -6,7 +6,11 @@ import by.epamtc.jwd.socket_serialization.client.view.UserCommunicator;
 import by.epamtc.jwd.socket_serialization.model.Request;
 import by.epamtc.jwd.socket_serialization.model.RequestOperationEntry;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class ClientController {
