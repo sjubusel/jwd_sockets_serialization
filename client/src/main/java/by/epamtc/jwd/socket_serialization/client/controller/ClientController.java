@@ -29,7 +29,6 @@ public class ClientController {
         try (InputStreamReader isr = new InputStreamReader(System.in);
              BufferedReader reader = new BufferedReader(isr)) {
             clientSocketService.startConnection("localhost", 443);
-
             userCommunicator.printDialogHeader();
 
             while (true) {
@@ -74,10 +73,19 @@ public class ClientController {
                 System.out.println("Результат выполнения запроса.");
                 responsePrinter.print(responseText);
 
-                if (true) {
-                    break;
+                userCommunicator.askUserIsAnotherOperationNeeded();
+                userInput = reader.readLine();
+                if (userCommunicator.isUserInputCorrect(userInput)) {
+                    requestBuilderService.addText(responseText);
+                    // method to query an operation
+
                 }
 
+                userCommunicator.askUserIfSessionShouldBeTerminated();
+                userInput = reader.readLine();
+                if (userCommunicator.isUserInputCorrect(userInput)) {
+                    break;
+                }
             }
 
             clientSocketService.stopConnection();
