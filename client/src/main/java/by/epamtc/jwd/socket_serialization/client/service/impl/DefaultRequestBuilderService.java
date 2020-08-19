@@ -16,4 +16,11 @@ public class DefaultRequestBuilderService implements RequestBuilderService {
     public void addOperation(RequestOperationEntry operation) {
         request.addOperation(operation);
     }
+
+    @Override
+    public Request buildRequest() {
+        Request request = this.request;
+        this.request = new Request();
+        return request;
+    }
 }
