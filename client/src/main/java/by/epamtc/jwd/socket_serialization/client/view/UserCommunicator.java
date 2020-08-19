@@ -105,4 +105,13 @@ public class UserCommunicator {
     public void informUserOperationIsIncorrect() {
         System.out.println("Вы не потдвердили операцию с текстом.");
     }
+
+    public void askUserIsAnotherOperationNeeded() {
+        System.out.println("Желаете ли Вы выбрать ещё одну операцию с текстом");
+        System.out.println("Если да, то введите символ \"Y\"");
+    }
+
+    public void informRequestIsComplete() {
+        System.out.println("Запрос для сервера готов.");
+    }
 }
