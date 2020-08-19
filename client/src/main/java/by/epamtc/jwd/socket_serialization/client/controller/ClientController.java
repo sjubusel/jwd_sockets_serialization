@@ -18,6 +18,7 @@ public class ClientController {
     private static ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private static RequestBuilderService requestBuilderService
             = serviceFactory.getRequestBuilderService();
+    private static ResponsePrinter responsePrinter = new ResponsePrinter();
 
     public static void main(String[] args) {
         String userInput;
@@ -72,7 +73,8 @@ public class ClientController {
                 System.out.println("Запрос направлен на сервер...");
 
                 Text responseText = ((Text) iStream.readObject());
-
+                System.out.println("Результат выполнения запроса.");
+                responsePrinter.print(responseText);
 
                 if (true) {
                     break;
