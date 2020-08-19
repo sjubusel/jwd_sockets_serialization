@@ -1,5 +1,6 @@
 package by.epamtc.jwd.socket_serialization.server.service;
 
+import by.epamtc.jwd.socket_serialization.server.service.impl.DefaultServerSocketService;
 import by.epamtc.jwd.socket_serialization.server.service.impl.DefaultTextProcessingService;
 import by.epamtc.jwd.socket_serialization.server.service.impl.DefaultTextService;
 
@@ -8,6 +9,9 @@ public class ServiceFactory {
     private final TextService textService = new DefaultTextService();
     private final TextProcessingService textProcessingService
             = new DefaultTextProcessingService();
+
+    private final ServerSocketService serverSocketService =
+            new DefaultServerSocketService();
 
     private ServiceFactory() {
     }
@@ -22,6 +26,10 @@ public class ServiceFactory {
 
     public TextProcessingService getTextProcessingService() {
         return textProcessingService;
+    }
+
+    public ServerSocketService getServerSocketService() {
+        return serverSocketService;
     }
 
 }
