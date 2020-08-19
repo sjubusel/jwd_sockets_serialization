@@ -114,4 +114,9 @@ public class UserCommunicator {
     public void informRequestIsComplete() {
         System.out.println("Запрос для сервера готов.");
     }
+
+    public void askUserIfSessionShouldBeTerminated() {
+        System.out.println("Желаете ли Вы завершить работу программы?");
+        System.out.println("Если да, то введите символ \"Y\"");
+    }
 }
