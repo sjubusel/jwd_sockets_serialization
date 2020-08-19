@@ -1,4 +1,4 @@
-package by.epamtc.jwd.socket_serialization.model;
+package by.epamtc.jwd.socket_serialization.model.request;
 
 public enum RequestOperation implements java.io.Serializable {
     WORDS_DELETION_12(1, "Из текста удалить все слова" +

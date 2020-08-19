@@ -1,7 +1,7 @@
 package by.epamtc.jwd.socket_serialization.client.view;
 
-import by.epamtc.jwd.socket_serialization.model.RequestOperation;
-import by.epamtc.jwd.socket_serialization.model.RequestOperationEntry;
+import by.epamtc.jwd.socket_serialization.model.request.RequestOperation;
+import by.epamtc.jwd.socket_serialization.model.request.RequestOperationEntry;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

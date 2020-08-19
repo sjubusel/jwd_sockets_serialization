@@ -1,4 +1,4 @@
-package by.epamtc.jwd.socket_serialization.model;
+package by.epamtc.jwd.socket_serialization.model.request;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -3,8 +3,8 @@ package by.epamtc.jwd.socket_serialization.client.controller;
 import by.epamtc.jwd.socket_serialization.client.service.RequestBuilderService;
 import by.epamtc.jwd.socket_serialization.client.service.ServiceFactory;
 import by.epamtc.jwd.socket_serialization.client.view.UserCommunicator;
-import by.epamtc.jwd.socket_serialization.model.Request;
-import by.epamtc.jwd.socket_serialization.model.RequestOperationEntry;
+import by.epamtc.jwd.socket_serialization.model.request.Request;
+import by.epamtc.jwd.socket_serialization.model.request.RequestOperationEntry;
 
 import java.io.BufferedReader;
 import java.io.IOException;

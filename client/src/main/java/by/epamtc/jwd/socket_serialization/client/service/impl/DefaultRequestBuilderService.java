@@ -1,8 +1,8 @@
 package by.epamtc.jwd.socket_serialization.client.service.impl;
 
 import by.epamtc.jwd.socket_serialization.client.service.RequestBuilderService;
-import by.epamtc.jwd.socket_serialization.model.Request;
-import by.epamtc.jwd.socket_serialization.model.RequestOperationEntry;
+import by.epamtc.jwd.socket_serialization.model.request.Request;
+import by.epamtc.jwd.socket_serialization.model.request.RequestOperationEntry;
 
 public class DefaultRequestBuilderService implements RequestBuilderService {
     private Request request = new Request();

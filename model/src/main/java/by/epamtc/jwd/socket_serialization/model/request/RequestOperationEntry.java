@@ -1,4 +1,4 @@
-package by.epamtc.jwd.socket_serialization.model;
+package by.epamtc.jwd.socket_serialization.model.request;
 
 public class RequestOperationEntry implements java.io.Serializable {
     private static final long serialVersionUID = 168182145881206812L;
