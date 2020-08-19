@@ -1,36 +1,34 @@
 package by.epamtc.jwd.socket_serialization.client.controller;
 
+import by.epamtc.jwd.socket_serialization.client.service.ClientSocketService;
 import by.epamtc.jwd.socket_serialization.client.service.RequestBuilderService;
 import by.epamtc.jwd.socket_serialization.client.service.ServiceFactory;
+import by.epamtc.jwd.socket_serialization.client.service.exception.ServiceException;
+import by.epamtc.jwd.socket_serialization.client.view.ResponsePrinter;
 import by.epamtc.jwd.socket_serialization.client.view.UserCommunicator;
 import by.epamtc.jwd.socket_serialization.model.request.Request;
 import by.epamtc.jwd.socket_serialization.model.request.RequestOperationEntry;
+import by.epamtc.jwd.socket_serialization.model.response.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
 
 public class ClientController {
     private static UserCommunicator userCommunicator = new UserCommunicator();
     private static ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private static RequestBuilderService requestBuilderService
             = serviceFactory.getRequestBuilderService();
+    private static ClientSocketService clientSocketService
+            = serviceFactory.getClientSocketService();
     private static ResponsePrinter responsePrinter = new ResponsePrinter();
 
     public static void main(String[] args) {
         String userInput;
-        Socket clientSocket;
-        ObjectOutputStream oStream;
-        ObjectInputStream iStream;
 
         try (InputStreamReader isr = new InputStreamReader(System.in);
              BufferedReader reader = new BufferedReader(isr)) {
-            clientSocket = new Socket("localhost", 443);
-            oStream = new ObjectOutputStream(clientSocket.getOutputStream());
-            iStream = new ObjectInputStream(clientSocket.getInputStream());
+            clientSocketService.startConnection("localhost", 443);
 
             userCommunicator.printDialogHeader();
 
@@ -69,10 +67,10 @@ public class ClientController {
 
                 userCommunicator.informRequestIsComplete();
                 Request request = requestBuilderService.buildRequest();
-                oStream.writeObject(request);
+                clientSocketService.sendObject(request);
                 System.out.println("Запрос направлен на сервер...");
 
-                Text responseText = ((Text) iStream.readObject());
+                Text responseText = (Text) clientSocketService.receiveObject();
                 System.out.println("Результат выполнения запроса.");
                 responsePrinter.print(responseText);
 
@@ -82,12 +80,12 @@ public class ClientController {
 
             }
 
+            clientSocketService.stopConnection();
             userCommunicator.printDialogFooter();
         } catch (IOException e) {
             //TODO add exception handling
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            //TODO add exception handling
+        } catch (ServiceException e) {
             e.printStackTrace();
         }
 
