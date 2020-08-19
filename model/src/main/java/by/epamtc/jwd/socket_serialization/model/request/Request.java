@@ -1,5 +1,7 @@
 package by.epamtc.jwd.socket_serialization.model.request;
 
+import by.epamtc.jwd.socket_serialization.model.response.Text;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -8,13 +10,15 @@ public class Request implements Serializable {
 
     private String fileName = "";
     private ArrayList<RequestOperationEntry> operations = new ArrayList<>();
+    private Text text = null;
 
     public Request() {
     }
 
-    public Request(String fileName, ArrayList<RequestOperationEntry> operations) {
+    public Request(String fileName, ArrayList<RequestOperationEntry> operations, Text text) {
         this.fileName = fileName;
         this.operations = operations;
+        this.text = text;
     }
 
     public String getFileName() {
@@ -31,6 +35,14 @@ public class Request implements Serializable {
 
     public void setOperations(ArrayList<RequestOperationEntry> operations) {
         this.operations = operations;
+    }
+
+    public Text getText() {
+        return text;
+    }
+
+    public void setText(Text text) {
+        this.text = text;
     }
 
     public boolean addOperation(RequestOperationEntry operation) {
@@ -54,7 +66,7 @@ public class Request implements Serializable {
                 return false;
             }
         }
-        return true;
+        return text.equals(request.text);
     }
 
     @Override
@@ -63,6 +75,7 @@ public class Request implements Serializable {
         for (RequestOperationEntry operation : operations) {
             hash = 31 * hash + (operation == null ? 0 : operation.hashCode());
         }
+        hash = 31 * hash + (text == null ? 0 : text.hashCode());
         return hash;
     }
 
