@@ -2,7 +2,6 @@ package by.epamtc.jwd.socket_serialization.client.service.impl;
 
 import by.epamtc.jwd.socket_serialization.client.service.ClientSocketService;
 import by.epamtc.jwd.socket_serialization.client.service.exception.ServiceException;
-import by.epamtc.jwd.socket_serialization.model.response.Text;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
