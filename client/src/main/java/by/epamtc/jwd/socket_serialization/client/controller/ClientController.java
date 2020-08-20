@@ -19,12 +19,14 @@ import java.io.InputStreamReader;
 public class ClientController {
     private static final Logger LOGGER = LoggerFactory
             .getLogger(ClientController.class);
-    private static UserCommunicator userCommunicator = new UserCommunicator();
+
     private static ServiceFactory serviceFactory = ServiceFactory.getInstance();
-    private static RequestBuilderService requestBuilderService
-            = serviceFactory.getRequestBuilderService();
     private static ClientSocketService clientSocketService
             = serviceFactory.getClientSocketService();
+    private static RequestBuilderService requestBuilderService
+            = serviceFactory.getRequestBuilderService();
+
+    private static UserCommunicator userCommunicator = new UserCommunicator();
     private static ResponsePrinter responsePrinter = new ResponsePrinter();
 
     public static void main(String[] args) {
@@ -102,16 +104,21 @@ public class ClientController {
     }
 
     private static RequestOperationEntry receiveOperationFromUser(BufferedReader reader) throws IOException {
-        String userInput;
         userCommunicator.askUserAboutOperation();
-        userInput = reader.readLine();
+        String userInput = reader.readLine();
         RequestOperationEntry operationEntry = userCommunicator
                 .receiveChosenOperation(userInput.trim());
         userCommunicator.informUserAboutChosenOperation(operationEntry);
+
         userCommunicator.askUserIsOperationCorrect();
         userInput = reader.readLine();
         if (!userCommunicator.isUserInputCorrect(userInput)) {
-            userCommunicator.informUserOperationIsIncorrect();
+            userCommunicator.informUserOperationIsNotApproved();
+            return null;
+        }
+
+        if (!requestBuilderService.isOperationValid(operationEntry)) {
+            userCommunicator.informUserOperationIsIncorrect(operationEntry);
             return null;
         }
         return operationEntry;
