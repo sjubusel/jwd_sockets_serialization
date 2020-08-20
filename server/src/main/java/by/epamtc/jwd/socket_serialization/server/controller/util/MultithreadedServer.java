@@ -42,6 +42,10 @@ public class MultithreadedServer extends Thread {
         }
     }
 
+    private boolean isRequestClosing(Request request) {
+        return !request.getFileName().equals("") && (request.getText() != null);
+    }
+
     public void stopServer() throws ControllerException {
         try {
             serverSocket.close();
@@ -82,12 +86,15 @@ public class MultithreadedServer extends Thread {
                 oStream = new ObjectOutputStream(clientSocket.getOutputStream());
 
                 Request request = (Request) iStream.readObject();
-                Text text = executorProvider.receiveText(request);
-                for (RequestOperationEntry operation : request.getOperations()) {
-                    executorProvider.executeAndUpdate(operation, text);
+                while (isRequestClosing(request)) {
+                    Text text = executorProvider.receiveText(request);
+                    for (RequestOperationEntry operation : request.getOperations()) {
+                        executorProvider.executeAndUpdate(operation, text);
+                    }
+                    oStream.writeObject(text);
+                    request = (Request) iStream.readObject();
                 }
 
-                oStream.writeObject(text);
             } catch (IOException e) {
                 LOGGER.error("ERROR WHILE CLIENT-SERVER COMMUNICATION", e);
             } catch (InterruptedException e) {
