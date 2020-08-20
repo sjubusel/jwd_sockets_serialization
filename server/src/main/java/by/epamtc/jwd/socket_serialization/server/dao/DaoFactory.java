@@ -3,7 +3,7 @@ package by.epamtc.jwd.socket_serialization.server.dao;
 import by.epamtc.jwd.socket_serialization.server.dao.impl.FileTextDao;
 
 public class DaoFactory {
-    private static final DaoFactory instance = new DaoFactory();
+    private static volatile DaoFactory instance;
 
     private final TextDao textDao = new FileTextDao();
 
@@ -11,7 +11,16 @@ public class DaoFactory {
     }
 
     public static DaoFactory getInstance() {
-        return instance;
+        DaoFactory localInstance = instance;
+        if (localInstance == null) {
+            synchronized (DaoFactory.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new DaoFactory();
+                }
+            }
+        }
+        return localInstance;
     }
 
     public TextDao getTextDao() {
