@@ -41,7 +41,7 @@ public class DefaultRequestBuilderService implements RequestBuilderService {
     @Override
     public boolean isOperationValid(RequestOperationEntry operation) {
         String regValidationRegExp = operation.getOperationKey()
-                .getRegValidationRegExp();
+                .getParamsValidationRegExp();
         String operationParams = operation.getOperationValue();
         return operationParams.matches(regValidationRegExp);
     }
