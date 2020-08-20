@@ -28,9 +28,9 @@ public class DefaultRequestBuilderService implements RequestBuilderService {
 
     @Override
     public Request buildRequest() {
-        Request request = this.request;
+        Request buildRequest = this.request;
         this.request = new Request();
-        return request;
+        return buildRequest;
     }
 
     @Override
