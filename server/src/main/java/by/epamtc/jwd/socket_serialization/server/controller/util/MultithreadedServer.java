@@ -1,5 +1,6 @@
 package by.epamtc.jwd.socket_serialization.server.controller.util;
 
+import by.epamtc.jwd.socket_serialization.model.RegExPattern;
 import by.epamtc.jwd.socket_serialization.model.request.Request;
 import by.epamtc.jwd.socket_serialization.model.request.RequestOperationEntry;
 import by.epamtc.jwd.socket_serialization.model.response.Text;
@@ -22,7 +23,6 @@ public class MultithreadedServer extends Thread {
 
     private ServerSocket serverSocket;
     private int serverPort;
-    private int dayInMillis = 24 * 60 * 60 * 1000;
     private Semaphore semaphore;
 
     private RequestOperationExecutorProvider executorProvider =
@@ -43,7 +43,8 @@ public class MultithreadedServer extends Thread {
     }
 
     private boolean isRequestClosing(Request request) {
-        return request.getFileName().equals("") && (request.getText() == null);
+        return request.getFileName().equals(RegExPattern.EMPTY_STRING)
+                && (request.getText() == null);
     }
 
     public void stopServer() throws ControllerException {
@@ -58,6 +59,7 @@ public class MultithreadedServer extends Thread {
     @Override
     public void run() {
         long currentTimeMillis = System.currentTimeMillis();
+        int dayInMillis = 24 * 60 * 60 * 1000;
         long stopTime = currentTimeMillis + dayInMillis;
         try {
             while (stopTime > System.currentTimeMillis()) {
