@@ -7,8 +7,8 @@ import java.util.Deque;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static by.epamtc.jwd.socket_serialization.model.response.RegExPattern.CURLY_BRACKET;
-import static by.epamtc.jwd.socket_serialization.model.response.RegExPattern.SPECIAL_CODE_LINE_CASE;
+import static by.epamtc.jwd.socket_serialization.model.RegExPattern.CURLY_BRACKET;
+import static by.epamtc.jwd.socket_serialization.model.RegExPattern.SPECIAL_CODE_LINE_CASE;
 
 public class ParserProvider {
     private TextParser codeBlockParser = new CodeBlockIntoTextComponentParser();

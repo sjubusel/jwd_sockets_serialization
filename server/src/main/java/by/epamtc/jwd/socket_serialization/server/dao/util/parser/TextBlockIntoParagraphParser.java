@@ -7,7 +7,7 @@ import by.epamtc.jwd.socket_serialization.model.response.composite.TextComposite
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static by.epamtc.jwd.socket_serialization.model.response.RegExPattern.*;
+import static by.epamtc.jwd.socket_serialization.model.RegExPattern.*;
 
 public class TextBlockIntoParagraphParser extends TextParser {
     private Pattern paragraphPattern = Pattern.compile(PARAGRAPH,

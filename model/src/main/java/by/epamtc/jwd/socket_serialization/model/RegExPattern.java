@@ -1,4 +1,4 @@
-package by.epamtc.jwd.socket_serialization.model.response;
+package by.epamtc.jwd.socket_serialization.model;
 
 public final class RegExPattern {
     public static final String REPEATING_WHITESPACES = "[ \\t]{2,}|\\t";

@@ -1,6 +1,6 @@
 package by.epamtc.jwd.socket_serialization.server.service.validation;
 
-import by.epamtc.jwd.socket_serialization.model.response.RegExPattern;
+import by.epamtc.jwd.socket_serialization.model.RegExPattern;
 
 public class TextPathValidator {
 

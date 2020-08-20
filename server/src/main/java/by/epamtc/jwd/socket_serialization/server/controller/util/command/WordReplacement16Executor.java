@@ -1,7 +1,7 @@
 package by.epamtc.jwd.socket_serialization.server.controller.util.command;
 
 import by.epamtc.jwd.socket_serialization.model.request.RequestOperationEntry;
-import by.epamtc.jwd.socket_serialization.model.response.RegExPattern;
+import by.epamtc.jwd.socket_serialization.model.RegExPattern;
 import by.epamtc.jwd.socket_serialization.model.response.Text;
 import by.epamtc.jwd.socket_serialization.server.controller.util.RequestOperationExecutor;
 import by.epamtc.jwd.socket_serialization.server.service.ServiceFactory;

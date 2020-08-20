@@ -6,7 +6,7 @@ import by.epamtc.jwd.socket_serialization.model.request.RequestOperationEntry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static by.epamtc.jwd.socket_serialization.model.response.RegExPattern.*;
+import static by.epamtc.jwd.socket_serialization.model.RegExPattern.*;
 
 public class UserCommunicator {
     private Pattern ordinalOperationNumber = Pattern.compile(DIGITS);

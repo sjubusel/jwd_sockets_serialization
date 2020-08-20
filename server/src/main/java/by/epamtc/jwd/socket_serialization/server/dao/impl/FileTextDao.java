@@ -16,8 +16,8 @@ import java.io.IOException;
 import java.util.Deque;
 import java.util.LinkedList;
 
-import static by.epamtc.jwd.socket_serialization.model.response.RegExPattern.BLANK_SPACE;
-import static by.epamtc.jwd.socket_serialization.model.response.RegExPattern.REPEATING_WHITESPACES;
+import static by.epamtc.jwd.socket_serialization.model.RegExPattern.BLANK_SPACE;
+import static by.epamtc.jwd.socket_serialization.model.RegExPattern.REPEATING_WHITESPACES;
 
 public class FileTextDao implements TextDao {
     private Logger logger = LoggerFactory.getLogger(FileTextDao.class);

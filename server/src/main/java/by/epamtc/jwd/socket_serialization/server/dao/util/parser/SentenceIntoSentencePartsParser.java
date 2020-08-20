@@ -9,7 +9,7 @@ import by.epamtc.jwd.socket_serialization.model.response.leaf.SentenceWord;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static by.epamtc.jwd.socket_serialization.model.response.RegExPattern.*;
+import static by.epamtc.jwd.socket_serialization.model.RegExPattern.*;
 
 public class SentenceIntoSentencePartsParser extends TextParser {
     private Pattern sentencePartPattern = Pattern.compile(SENTENCE_PART);

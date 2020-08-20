@@ -1,7 +1,7 @@
 package by.epamtc.jwd.socket_serialization.model.response.composite;
 
 import by.epamtc.jwd.socket_serialization.model.response.Composite;
-import by.epamtc.jwd.socket_serialization.model.response.RegExPattern;
+import by.epamtc.jwd.socket_serialization.model.RegExPattern;
 import by.epamtc.jwd.socket_serialization.model.response.Text;
 
 import java.util.ArrayList;
