@@ -102,7 +102,7 @@ public class UserCommunicator {
         System.out.println("Если да, то введите символ \"Y\"");
     }
 
-    public void informUserOperationIsIncorrect() {
+    public void informUserOperationIsNotApproved() {
         System.out.println("Вы не потдвердили операцию с текстом.");
     }
 
@@ -118,5 +118,11 @@ public class UserCommunicator {
     public void askUserIfSessionShouldBeTerminated() {
         System.out.println("Желаете ли Вы завершить работу программы?");
         System.out.println("Если да, то введите символ \"Y\"");
+    }
+
+    public void informUserOperationIsIncorrect(RequestOperationEntry operation) {
+        System.out.printf("Вы ввели некорректные параметры \"%s\" для " +
+                        "операции \"%s\"%n", operation.getOperationValue(),
+                operation.getOperationKey().getDescription());
     }
 }
