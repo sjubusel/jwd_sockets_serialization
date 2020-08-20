@@ -1,5 +1,6 @@
 package by.epamtc.jwd.socket_serialization.model.request;
 
+import by.epamtc.jwd.socket_serialization.model.RegExPattern;
 import by.epamtc.jwd.socket_serialization.model.response.Text;
 
 import java.io.Serializable;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 public class Request implements Serializable {
     private static final long serialVersionUID = -6094367457972134648L;
 
-    private String fileName = "";
+    private String fileName = RegExPattern.EMPTY_STRING;
     private ArrayList<RequestOperationEntry> operations = new ArrayList<>();
     private Text text = null;
 
