@@ -14,4 +14,6 @@ public interface RequestBuilderService {
     Request buildRequest();
 
     boolean doOperationsExist();
+
+    boolean isOperationValid(RequestOperationEntry operation);
 }

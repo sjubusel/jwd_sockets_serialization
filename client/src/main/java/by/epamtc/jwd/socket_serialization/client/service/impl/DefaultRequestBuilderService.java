@@ -37,4 +37,12 @@ public class DefaultRequestBuilderService implements RequestBuilderService {
     public boolean doOperationsExist() {
         return request.getOperations().size() > 0;
     }
+
+    @Override
+    public boolean isOperationValid(RequestOperationEntry operation) {
+        String regValidationRegExp = operation.getOperationKey()
+                .getRegValidationRegExp();
+        String operationParams = operation.getOperationValue();
+        return operationParams.matches(regValidationRegExp);
+    }
 }
