@@ -2,6 +2,7 @@ package by.epamtc.jwd.socket_serialization.client.service.impl;
 
 import by.epamtc.jwd.socket_serialization.client.service.RequestBuilderService;
 import by.epamtc.jwd.socket_serialization.model.request.Request;
+import by.epamtc.jwd.socket_serialization.model.request.RequestOperation;
 import by.epamtc.jwd.socket_serialization.model.request.RequestOperationEntry;
 import by.epamtc.jwd.socket_serialization.model.response.Text;
 
@@ -15,7 +16,9 @@ public class DefaultRequestBuilderService implements RequestBuilderService {
 
     @Override
     public void addOperation(RequestOperationEntry operation) {
-        request.addOperation(operation);
+        if (operation.getOperationKey() != RequestOperation.VIEW_OPERATION) {
+            request.addOperation(operation);
+        }
     }
 
     @Override
