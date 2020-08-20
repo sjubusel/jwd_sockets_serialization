@@ -5,7 +5,7 @@ import by.epamtc.jwd.socket_serialization.server.service.impl.DefaultTextProcess
 import by.epamtc.jwd.socket_serialization.server.service.impl.DefaultTextService;
 
 public class ServiceFactory {
-    private static final ServiceFactory instance = new ServiceFactory();
+    private static volatile ServiceFactory instance;
     private final TextService textService = new DefaultTextService();
     private final TextProcessingService textProcessingService
             = new DefaultTextProcessingService();
@@ -17,7 +17,16 @@ public class ServiceFactory {
     }
 
     public static ServiceFactory getInstance() {
-        return instance;
+        ServiceFactory localInstance = instance;
+        if (localInstance == null) {
+            synchronized (ServiceFactory.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new ServiceFactory();
+                }
+            }
+        }
+        return localInstance;
     }
 
     public TextService getTextService() {
