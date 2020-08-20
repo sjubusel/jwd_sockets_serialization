@@ -69,6 +69,8 @@ public class ClientController {
                 userCommunicator.askUserIfSessionShouldBeTerminated();
                 userInput = reader.readLine();
                 if (userCommunicator.isUserInputCorrect(userInput)) {
+                    request = requestBuilderService.buildRequest();
+                    clientSocketService.sendObject(request);
                     break;
                 }
             }
