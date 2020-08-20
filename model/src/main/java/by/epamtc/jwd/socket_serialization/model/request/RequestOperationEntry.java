@@ -9,7 +9,8 @@ public class RequestOperationEntry implements java.io.Serializable {
     public RequestOperationEntry() {
     }
 
-    public RequestOperationEntry(RequestOperation operationKey, String operationValue) {
+    public RequestOperationEntry(RequestOperation operationKey,
+            String operationValue) {
         this.operationKey = operationKey;
         this.operationValue = operationValue;
     }
