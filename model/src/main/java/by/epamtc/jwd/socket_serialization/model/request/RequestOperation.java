@@ -2,30 +2,33 @@ package by.epamtc.jwd.socket_serialization.model.request;
 
 public enum RequestOperation implements java.io.Serializable {
     VIEW_OPERATION(0, "Просмотр текста из файла (выполняется в самом конце)",
-            ""),
+            "", "[0-9]+"),
     WORDS_DELETION_12(1, "Из текста удалить все слова" +
             " заданной длины, начинающиеся на согласную букву.",
-            "*пробел**длина слова для удаления*"),
+            "*пробел**длина слова для удаления*", "[0-9]+[ ]{1}[0-9]+"),
 
     FIRST_LETTER_DELETION_15(2, "Преобразовать каждое " +
             "слово в тексте, удалив из него все последующие вхождения первой " +
-            "буквы этого слова", ""),
+            "буквы этого слова", "", "[0-9]+"),
 
     WORD_REPLACEMENT_16(3, "В некотором предложении " +
             "текста слова заданной длины заменить указанной подстрокой, длина" +
             " которой может не совпадать с длиной слова.",
-            "*пробел**длина слова для замены**пробел**заменяющая подстрока*");
+            "*пробел**длина слова для замены**пробел**заменяющая подстрока*",
+            "[0-9]+[ ]{1}[0-9]+[ ]{1}[\\W]+");
 
     int ordinalNumber;
-
     String description;
     String inputFormat;
+    String regValidationRegExp;
 
-    RequestOperation(int ordinalNumber, String description, String format) {
+    RequestOperation(int ordinalNumber, String description, String format,
+            String regValidationRegExp) {
         this.ordinalNumber = ordinalNumber;
         this.description = description;
 //        this.inputFormat = "Формат ввода: " + ordinalNumber + format;
         this.inputFormat = ordinalNumber + format;
+        this.regValidationRegExp = regValidationRegExp;
     }
 
     public int getOrdinalNumber() {
@@ -40,6 +43,10 @@ public enum RequestOperation implements java.io.Serializable {
         return inputFormat;
     }
 
+    public String getRegValidationRegExp() {
+        return regValidationRegExp;
+    }
+
     public void setOrdinalNumber(int ordinalNumber) {
         this.ordinalNumber = ordinalNumber;
     }
@@ -50,6 +57,10 @@ public enum RequestOperation implements java.io.Serializable {
 
     public void setInputFormat(String inputFormat) {
         this.inputFormat = inputFormat;
+    }
+
+    public void setRegValidationRegExp(String regValidationRegExp) {
+        this.regValidationRegExp = regValidationRegExp;
     }
 
     @Override
