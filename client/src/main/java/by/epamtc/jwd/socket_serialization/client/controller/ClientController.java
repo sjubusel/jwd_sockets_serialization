@@ -9,12 +9,16 @@ import by.epamtc.jwd.socket_serialization.client.view.UserCommunicator;
 import by.epamtc.jwd.socket_serialization.model.request.Request;
 import by.epamtc.jwd.socket_serialization.model.request.RequestOperationEntry;
 import by.epamtc.jwd.socket_serialization.model.response.Text;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ClientController {
+    private static final Logger LOGGER = LoggerFactory
+            .getLogger(ClientController.class);
     private static UserCommunicator userCommunicator = new UserCommunicator();
     private static ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private static RequestBuilderService requestBuilderService
@@ -91,10 +95,13 @@ public class ClientController {
             clientSocketService.stopConnection();
             userCommunicator.printDialogFooter();
         } catch (IOException e) {
-            //TODO add exception handling
-            e.printStackTrace();
+            LOGGER.error("IO ERROR WHILE COMMUNICATION WITH A USER", e);
+            System.out.println("Приложение временно не работает, " +
+                    "обратитесь к администратору");
         } catch (ServiceException e) {
-            e.printStackTrace();
+            LOGGER.error("REQUEST BUILDING ERROR", e);
+            System.out.println("Приложение временно не работает, " +
+                    "обратитесь к администратору");
         }
 
     }
