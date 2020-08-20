@@ -22,6 +22,9 @@ public final class RegExPattern {
     public static final String PUNCTUATION_MARK = "[.,;:!?]";
     public static final String FILE_NAMING = "[A-Za-z0-9]+\\.txt";
 
+    public static final String DIGITS = "\\d";
+    public static final String WHITESPACES = "\\s+";
+
     private RegExPattern() {
     }
 }

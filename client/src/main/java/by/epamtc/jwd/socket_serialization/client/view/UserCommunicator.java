@@ -6,8 +6,10 @@ import by.epamtc.jwd.socket_serialization.model.request.RequestOperationEntry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static by.epamtc.jwd.socket_serialization.model.response.RegExPattern.*;
+
 public class UserCommunicator {
-    private Pattern ordinalOperationNumber = Pattern.compile("\\d");
+    private Pattern ordinalOperationNumber = Pattern.compile(DIGITS);
 
     public void printDialogHeader() {
         System.out.println("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
@@ -15,15 +17,9 @@ public class UserCommunicator {
         System.out.println("▓ Программа по разбору текста по программированию из файла ▓");
         System.out.println("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
         System.out.println("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
-        System.out.println();
-        System.out.println();
-        System.out.println();
     }
 
     public void printDialogFooter() {
-        System.out.println();
-        System.out.println();
-        System.out.println();
         System.out.println("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
         System.out.println("▓            ▓▓▓▓▓▓▓▓▓▓      ▓▓▓      ▓▓▓▓         ▓▓      ▓");
         System.out.println("▓           ▓▓              ▓▓▓      ▓▓  ▓▓       ▓▓       ▓");
@@ -32,9 +28,6 @@ public class UserCommunicator {
         System.out.println("▓        ▓▓              ▓▓▓      ▓▓        ▓▓ ▓▓          ▓");
         System.out.println("▓       ▓▓              ▓▓▓      ▓▓          ▓▓▓           ▓");
         System.out.println("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
-        System.out.println();
-        System.out.println();
-        System.out.println();
     }
 
     public void askUserAboutFileName() {
@@ -47,8 +40,8 @@ public class UserCommunicator {
     }
 
     public void askUserIsFileNameCorrect() {
-        System.out.println("Вы ввели корректное имя файла?");
-        System.out.println("Если да, то введите символ \"Y\"");
+        System.out.println("Вы ввели корректное имя файла? Если да, то " +
+                "введите символ \"Y\"");
     }
 
     public boolean isUserInputCorrect(String userInput) {
@@ -68,7 +61,7 @@ public class UserCommunicator {
     }
 
     public RequestOperationEntry receiveChosenOperation(String userInput) {
-        userInput = userInput.replaceAll("\\s+", " ");
+        userInput = userInput.replaceAll(WHITESPACES, BLANK_SPACE);
         int ordinalNumberOfChosenOperation = -1;
         RequestOperation chosenOperation = null;
         String chosenOperationValue = "";
@@ -98,8 +91,8 @@ public class UserCommunicator {
 
 
     public void askUserIsOperationCorrect() {
-        System.out.println("Вы ввели корректную операцию?");
-        System.out.println("Если да, то введите символ \"Y\"");
+        System.out.println("Вы ввели корректную операцию? Если да, то введите"
+                + " символ \"Y\"");
     }
 
     public void informUserOperationIsNotApproved() {
@@ -107,8 +100,8 @@ public class UserCommunicator {
     }
 
     public void askUserIsAnotherOperationNeeded() {
-        System.out.println("Желаете ли Вы выбрать ещё одну операцию с текстом");
-        System.out.println("Если да, то введите символ \"Y\"");
+        System.out.println("Желаете ли Вы выбрать ещё одну операцию с текстом "
+                + "Если да, то введите символ \"Y\"");
     }
 
     public void informRequestIsComplete() {
@@ -116,8 +109,8 @@ public class UserCommunicator {
     }
 
     public void askUserIfSessionShouldBeTerminated() {
-        System.out.println("Желаете ли Вы завершить работу программы?");
-        System.out.println("Если да, то введите символ \"Y\"");
+        System.out.println("Желаете ли Вы завершить работу программы? " +
+                "Если да, то введите символ \"Y\"");
     }
 
     public void informUserOperationIsIncorrect(RequestOperationEntry operation) {
