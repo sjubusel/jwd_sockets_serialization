@@ -5,8 +5,10 @@ import by.epamtc.jwd.socket_serialization.client.service.impl.DefaultRequestBuil
 
 public class ServiceFactory {
     private static final ServiceFactory instance = new ServiceFactory();
-    private final RequestBuilderService requestBuilderService = new DefaultRequestBuilderService();
-    private final ClientSocketService clientSocketService = new DefaultClientSocketService();
+    private final RequestBuilderService requestBuilderService
+            = new DefaultRequestBuilderService();
+    private final ClientSocketService clientSocketService
+            = new DefaultClientSocketService();
 
     private ServiceFactory() {
     }
