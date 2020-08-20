@@ -5,9 +5,9 @@ import by.epamtc.jwd.socket_serialization.client.service.exception.ServiceExcept
 public interface ClientSocketService {
     void startConnection(String address, int port) throws ServiceException;
 
-    void sendObject(Object objectToSend) throws ServiceException;
+    void sendObjectToServer(Object objectToSend) throws ServiceException;
 
-    Object receiveObject() throws ServiceException;
+    Object receiveObjectFromServer() throws ServiceException;
 
     void stopConnection() throws ServiceException;
 }

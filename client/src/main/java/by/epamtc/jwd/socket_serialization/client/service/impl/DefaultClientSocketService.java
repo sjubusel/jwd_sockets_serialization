@@ -25,7 +25,7 @@ public class DefaultClientSocketService implements ClientSocketService {
     }
 
     @Override
-    public void sendObject(Object objectToSend) throws ServiceException {
+    public void sendObjectToServer(Object objectToSend) throws ServiceException {
         try {
             oStream.writeObject(objectToSend);
         } catch (IOException e) {
@@ -34,7 +34,7 @@ public class DefaultClientSocketService implements ClientSocketService {
     }
 
     @Override
-    public Object receiveObject() throws ServiceException {
+    public Object receiveObjectFromServer() throws ServiceException {
         try {
             return iStream.readObject();
         } catch (IOException | ClassNotFoundException e) {

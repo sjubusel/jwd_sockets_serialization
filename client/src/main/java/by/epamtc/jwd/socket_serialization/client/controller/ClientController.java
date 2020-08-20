@@ -59,10 +59,10 @@ public class ClientController {
 
                 userCommunicator.informRequestIsComplete();
                 Request request = requestBuilderService.buildRequest();
-                clientSocketService.sendObject(request);
+                clientSocketService.sendObjectToServer(request);
                 System.out.println("Запрос направлен на сервер...");
 
-                Text responseText = (Text) clientSocketService.receiveObject();
+                Text responseText = (Text) clientSocketService.receiveObjectFromServer();
                 System.out.println("Результат выполнения запроса.");
                 responsePrinter.print(responseText);
 
@@ -72,7 +72,7 @@ public class ClientController {
                 userInput = reader.readLine();
                 if (userCommunicator.isUserInputCorrect(userInput)) {
                     request = requestBuilderService.buildRequest();
-                    clientSocketService.sendObject(request);
+                    clientSocketService.sendObjectToServer(request);
                     break;
                 }
             }
@@ -152,10 +152,10 @@ public class ClientController {
 
             if (requestBuilderService.doOperationsExist()) {
                 Request request = requestBuilderService.buildRequest();
-                clientSocketService.sendObject(request);
+                clientSocketService.sendObjectToServer(request);
                 System.out.println("Запрос направлен на сервер...");
 
-                responseText = (Text) clientSocketService.receiveObject();
+                responseText = (Text) clientSocketService.receiveObjectFromServer();
                 System.out.println("Результат выполнения запроса.");
                 responsePrinter.print(responseText);
                 performAdditionalOperationsIfNecessary(responseText, reader);
