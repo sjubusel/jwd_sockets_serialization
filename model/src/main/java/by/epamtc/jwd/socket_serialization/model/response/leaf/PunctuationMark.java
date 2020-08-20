@@ -4,6 +4,7 @@ import by.epamtc.jwd.socket_serialization.model.response.CompositeElement;
 import by.epamtc.jwd.socket_serialization.model.response.Text;
 
 public class PunctuationMark implements Text, CompositeElement {
+    private static final long serialVersionUID = 7596944797912125562L;
     /**
      * a punctuation mark
      */

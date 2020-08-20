@@ -11,6 +11,7 @@ import java.util.List;
  * a class, which is a pure realization of a "Composite" part of Composite Pattern
  */
 public class TextComposite implements Text, Composite {
+    private static final long serialVersionUID = 6090643406958352425L;
     /**
      * paragraphs and code blocks
      */

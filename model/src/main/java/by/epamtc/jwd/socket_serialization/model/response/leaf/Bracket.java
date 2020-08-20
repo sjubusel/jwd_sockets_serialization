@@ -4,6 +4,7 @@ import by.epamtc.jwd.socket_serialization.model.response.CompositeElement;
 import by.epamtc.jwd.socket_serialization.model.response.Text;
 
 public class Bracket implements Text, CompositeElement {
+    private static final long serialVersionUID = -2761073012613803866L;
     /**
      * an opening or closing round bracket
      */

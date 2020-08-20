@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TextSentence implements Text, Composite {
+    private static final long serialVersionUID = 2169275861258217427L;
     /**
      * words
      */

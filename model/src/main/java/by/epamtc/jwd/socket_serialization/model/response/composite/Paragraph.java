@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Paragraph implements Text, Composite {
+    private static final long serialVersionUID = -6383360481285235651L;
     /**
      * sentences
      */

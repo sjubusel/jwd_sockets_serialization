@@ -4,6 +4,7 @@ import by.epamtc.jwd.socket_serialization.model.response.CompositeElement;
 import by.epamtc.jwd.socket_serialization.model.response.Text;
 
 public class SentenceWord implements Text, CompositeElement {
+    private static final long serialVersionUID = 180539874523038405L;
     /**
      * simple word or punctuation mark
      */

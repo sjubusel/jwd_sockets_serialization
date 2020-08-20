@@ -4,6 +4,7 @@ import by.epamtc.jwd.socket_serialization.model.response.CompositeElement;
 import by.epamtc.jwd.socket_serialization.model.response.Text;
 
 public class CodeBlock implements Text, CompositeElement {
+    private static final long serialVersionUID = -6723385409240979134L;
     /**
      * a code block, which consists of clock lines
      */
