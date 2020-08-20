@@ -23,7 +23,7 @@ public class ServerController {
 
 
         try {
-            Thread.sleep(60 * 1000);
+            Thread.sleep(24 * 60 * 1000);
         } catch (InterruptedException e) {
             LOGGER.error("WORK OF SERVER CONTROLLER IS INTERRUPTED.");
         }

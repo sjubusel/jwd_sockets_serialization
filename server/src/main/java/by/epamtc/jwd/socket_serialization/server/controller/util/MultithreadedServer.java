@@ -43,7 +43,7 @@ public class MultithreadedServer extends Thread {
     }
 
     private boolean isRequestClosing(Request request) {
-        return !request.getFileName().equals("") && (request.getText() != null);
+        return request.getFileName().equals("") && (request.getText() == null);
     }
 
     public void stopServer() throws ControllerException {
@@ -86,7 +86,7 @@ public class MultithreadedServer extends Thread {
                 oStream = new ObjectOutputStream(clientSocket.getOutputStream());
 
                 Request request = (Request) iStream.readObject();
-                while (isRequestClosing(request)) {
+                while (!isRequestClosing(request)) {
                     Text text = executorProvider.receiveText(request);
                     for (RequestOperationEntry operation : request.getOperations()) {
                         executorProvider.executeAndUpdate(operation, text);

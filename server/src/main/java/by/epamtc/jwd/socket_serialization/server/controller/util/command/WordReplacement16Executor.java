@@ -15,7 +15,7 @@ public class WordReplacement16Executor implements RequestOperationExecutor {
     @Override
     public void executeAndUpdate(RequestOperationEntry operation, Text text) {
         String[] operationParameter = operation.getOperationValue()
-                .split(RegExPattern.REPEATING_WHITESPACES);
+                .split(RegExPattern.BLANK_SPACE);
         int length = Integer.parseInt(operationParameter[0]);
         String replacingString = operationParameter[1];
         textProcessingService.replaceWordsOfLengthWithSubstring(text, length,
