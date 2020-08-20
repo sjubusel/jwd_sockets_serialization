@@ -32,4 +32,9 @@ public class DefaultRequestBuilderService implements RequestBuilderService {
         this.request = new Request();
         return request;
     }
+
+    @Override
+    public boolean doOperationsExist() {
+        return request.getOperations().size() > 0;
+    }
 }
