@@ -63,7 +63,7 @@ public class UserCommunicator {
         System.out.println("Введите операцию с текстом.");
         for (RequestOperation value : RequestOperation.values()) {
             System.out.printf("Введите \"%s\" для выбора операции:\n" +
-                    "\"%s\"\n", value.getOrdinalNumber(), value.getDescription());
+                    "\"%s\"\n", value.getInputFormat(), value.getDescription());
         }
     }
 
