@@ -151,9 +151,9 @@ public class ClientController {
                 responseText = (Text) clientSocketService.receiveObject();
                 System.out.println("Результат выполнения запроса.");
                 responsePrinter.print(responseText);
+                performAdditionalOperationsIfNecessary(responseText, reader);
             }
         }
-        performAdditionalOperationsIfNecessary(responseText, reader);
 
     }
 }
