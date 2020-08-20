@@ -90,17 +90,15 @@ public class ClientController {
     }
 
     private static String receiveFileNameFromUser(BufferedReader reader) throws IOException {
-        String userInput;
         userCommunicator.askUserAboutFileName();
-        userInput = reader.readLine();
-        userCommunicator.informUserAboutChosenFileName(userInput);
+        String fileName = reader.readLine();
+        userCommunicator.informUserAboutChosenFileName(fileName);
         userCommunicator.askUserIsFileNameCorrect();
-        userInput = reader.readLine();
-        if (!userCommunicator.isUserInputCorrect(userInput)) {
+        if (!userCommunicator.isUserInputCorrect(reader.readLine())) {
             userCommunicator.informUserFileNameIsIncorrect();
             return null;
         }
-        return userInput;
+        return fileName;
     }
 
     private static RequestOperationEntry receiveOperationFromUser(BufferedReader reader) throws IOException {
