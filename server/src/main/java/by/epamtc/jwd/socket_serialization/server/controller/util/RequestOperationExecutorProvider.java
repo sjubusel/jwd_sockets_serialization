@@ -33,10 +33,6 @@ public class RequestOperationExecutorProvider {
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private TextService textService = serviceFactory.getTextService();
 
-//    public RequestOperationExecutor getExecutor(RequestOperation operation) {
-//        return repository.get(operation);
-//    }
-
     public Text receiveText(Request request) throws ServiceException {
         Text responseText = request.getText();
         if (responseText != null) {
