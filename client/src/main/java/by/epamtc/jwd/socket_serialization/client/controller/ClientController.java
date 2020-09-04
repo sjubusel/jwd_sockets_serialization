@@ -6,6 +6,7 @@ import by.epamtc.jwd.socket_serialization.client.service.ServiceFactory;
 import by.epamtc.jwd.socket_serialization.client.service.exception.ServiceException;
 import by.epamtc.jwd.socket_serialization.client.view.ResponsePrinter;
 import by.epamtc.jwd.socket_serialization.client.view.UserCommunicator;
+import by.epamtc.jwd.socket_serialization.model.RegExPattern;
 import by.epamtc.jwd.socket_serialization.model.request.Request;
 import by.epamtc.jwd.socket_serialization.model.request.RequestOperationEntry;
 import by.epamtc.jwd.socket_serialization.model.response.Text;
@@ -106,6 +107,9 @@ public class ClientController {
     private static RequestOperationEntry receiveOperationFromUser(BufferedReader reader) throws IOException {
         userCommunicator.askUserAboutOperation();
         String userInput = reader.readLine();
+        while (RegExPattern.EMPTY_STRING.equals(userInput)) {
+            userInput = reader.readLine();
+        }
         RequestOperationEntry operationEntry = userCommunicator
                 .receiveChosenOperation(userInput.trim());
         userCommunicator.informUserAboutChosenOperation(operationEntry);
